@@ -49,7 +49,6 @@
 		FE5142FD1F387701006EFF81 /* HL_UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FC1F387701006EFF81 /* HL_UserTableViewCell.m */; };
 		FE5143001F38A1FF006EFF81 /* HL_SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */; };
 		FE5143031F38A4CA006EFF81 /* HL_SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */; };
-		FE769B0A1F47FAEF005FC279 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE769B091F47FAEF005FC279 /* Reveal.framework */; };
 		FE769B0D1F48051A005FC279 /* HL_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */; };
 		FEF487111F4F07AB002A8265 /* HL_EditBaseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF487101F4F07AB002A8265 /* HL_EditBaseInfoViewController.m */; };
 		FEF487141F4F085C002A8265 /* HL_EditBaseInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF487131F4F085C002A8265 /* HL_EditBaseInfoView.m */; };
@@ -156,7 +155,6 @@
 		FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SettingViewController.m; sourceTree = "<group>"; };
 		FE5143011F38A4CA006EFF81 /* HL_SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_SettingCell.h; sourceTree = "<group>"; };
 		FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SettingCell.m; sourceTree = "<group>"; };
-		FE769B091F47FAEF005FC279 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		FE769B0B1F48051A005FC279 /* HL_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_CommunityModel.h; sourceTree = "<group>"; };
 		FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_CommunityModel.m; sourceTree = "<group>"; };
 		FEF4870F1F4F07AB002A8265 /* HL_EditBaseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_EditBaseInfoViewController.h; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1E0FCAFCB6D706EA340A71F /* libPods-Meet.a in Frameworks */,
-				FE769B0A1F47FAEF005FC279 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +287,6 @@
 		92359F651F32B081002B4538 /* ThirdTools */ = {
 			isa = PBXGroup;
 			children = (
-				FE769B091F47FAEF005FC279 /* Reveal.framework */,
 				FE25714E1F4046FF004426C1 /* JHPickView */,
 			);
 			path = ThirdTools;
@@ -1057,9 +1053,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"VideoToolbox\"",
-					"-lz",
-					"-framework",
-					"\"Reveal\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1148,9 +1141,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"VideoToolbox\"",
-					"-lz",
-					"-framework",
-					"\"Reveal\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
