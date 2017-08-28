@@ -110,10 +110,10 @@
             cell.type = CellType_Photo;
             
             cell.photoArray = [@[@"",
-                                @"icon_contact_group chat",
-                                @"icon_contact_group chat",
-                                @"icon_contact_group chat",
-                                @"icon_contact_group chat"] mutableCopy];
+                                @"icon",
+                                @"icon",
+                                @"icon",
+                                @"icon"] mutableCopy];
         }
             break;
         case 2:

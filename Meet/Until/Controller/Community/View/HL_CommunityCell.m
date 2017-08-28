@@ -7,10 +7,15 @@
 //
 
 #import "HL_CommunityCell.h"
+#import "HL_PhotoCollectionViewCell.h"
 
 #import "HL_CommunityModel.h"
 
 @interface HL_CommunityCell ()
+<
+    UICollectionViewDelegate,
+    UICollectionViewDataSource
+>
 
 @property (nonatomic, strong) UILabel *timeLbl;
 @property (nonatomic, strong) UILabel *ageLbl;
@@ -25,6 +30,10 @@
 @property (nonatomic, strong) UIButton *messageBtn;
 
 @property (nonatomic, strong) UIView *photoInfoView;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSArray *dataSources;
 
 @end
 
@@ -44,6 +53,7 @@
     
     return self;
 }
+
 
 - (void)defaultConfig {
 
@@ -135,6 +145,13 @@
         make.bottom.equalTo(self.messageBtn.mas_top).offset(-15);
     }];
 
+    [self.photoInfoView addSubview:self.collectionView];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.photoInfoView);
+        make.size.equalTo(self.photoInfoView);
+        make.bottom.equalTo(self.photoInfoView);
+    }];
 }
 
 - (void)clickLikeBtn:(UIButton *)btn {
@@ -149,6 +166,25 @@
 #pragma mark - Public Method
 
 #pragma mark - Delegate
+
+#pragma mark UICollectionViewDelegate
+
+#pragma mark UICollectionDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    return 9;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                           cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    HL_PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[HL_PhotoCollectionViewCell description]
+                                                                                 forIndexPath:indexPath];
+    
+    cell.photoImageView.image = [UIImage imageNamed:@"icon"];
+    
+    return cell;
+}
 
 #pragma mark - Setter And Getter
 
@@ -174,8 +210,6 @@
     
     [self.likeBtn setTitleColor:[UIColor redColor]
                        forState:UIControlStateNormal];
-    
-    self.photoInfoView.backgroundColor = [UIColor yellowColor];
     
 }
 
@@ -252,8 +286,6 @@
         [_likeBtn setImage:[UIImage imageNamed:@"news-good"]
                   forState:UIControlStateNormal];
         
-        _likeBtn.backgroundColor = [UIColor redColor];
-        
         [_likeBtn addTarget:self
                      action:@selector(clickLikeBtn:)
            forControlEvents:UIControlEventTouchUpInside];
@@ -314,6 +346,28 @@
     }
     
     return _timeImgView;
+}
+
+- (UICollectionView *)collectionView {
+
+    if (!_collectionView) {
+        
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.itemSize                = CGSizeMake(RELATIVE_WIDTH(IPHONE5?150:180),
+                                                    RELATIVE_WIDTH(IPHONE5?150:180));
+        layout.minimumLineSpacing      = 10;
+        layout.minimumInteritemSpacing = 10;
+        
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                             collectionViewLayout:layout];
+        _collectionView.delegate        = self;
+        _collectionView.dataSource      = self;
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        
+        [_collectionView registerClass:[HL_PhotoCollectionViewCell class] forCellWithReuseIdentifier:[HL_PhotoCollectionViewCell description]];
+    }
+    
+    return _collectionView;
 }
 
 #pragma mark - Dealloc

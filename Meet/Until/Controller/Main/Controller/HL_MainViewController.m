@@ -8,10 +8,12 @@
 
 #import "HL_MainViewController.h"
 
-#import "HL_EditViewController.h"
-#import "HL_SearchViewController.h"
+#import "HL_CommunityModel.h"
 
 #import "HL_CommunityCell.h"
+
+#import "HL_EditViewController.h"
+#import "HL_SearchViewController.h"
 
 @interface HL_MainViewController ()
 <
@@ -77,16 +79,18 @@
 #pragma mark - Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataSources.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 360;
+    return RELATIVE_HEIGHT(IPHONE5?780:860);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     HL_CommunityCell *communityCell = [tableView dequeueReusableCellWithIdentifier:[HL_CommunityCell description]];
+    
+    communityCell.communityModel = self.dataSources[indexPath.row];
     
     return communityCell;
 }
@@ -124,6 +128,31 @@
     return _tableView;
 }
 
+- (NSMutableArray *)dataSources {
+
+    if (!_dataSources) {
+        
+        _dataSources = [NSMutableArray array];
+        
+        HL_CommunityModel *communityModel = [[HL_CommunityModel alloc] init];
+        
+        communityModel.sex      = 1;
+        communityModel.age      = @"80";
+        communityModel.intro    = @"这是一个测试的简介";
+        communityModel.iconImg  = @"icon";
+        communityModel.nickName = @"测试昵称";
+        communityModel.timeStamp = @"3分钟前";
+        
+        communityModel.praiseCount  = @"5";
+        communityModel.messageCount = @"10";
+        
+        communityModel.photoImgArray = @[@"icon",@"icon",@"icon"];
+        
+        [_dataSources addObject:communityModel];
+    }
+    
+    return _dataSources;
+}
 
 #pragma mark - Dealloc
 

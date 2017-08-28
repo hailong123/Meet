@@ -44,6 +44,7 @@
 		FE2571571F4046FF004426C1 /* JHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2571521F4046FF004426C1 /* JHPickView.m */; };
 		FE2571581F4046FF004426C1 /* MySingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2571541F4046FF004426C1 /* MySingleton.m */; };
 		FE2571591F4046FF004426C1 /* province_data.json in Resources */ = {isa = PBXBuildFile; fileRef = FE2571551F4046FF004426C1 /* province_data.json */; };
+		FE3CB28B1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE3CB28A1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m */; };
 		FE5142F81F386AFD006EFF81 /* HL_UserHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142F71F386AFD006EFF81 /* HL_UserHeardView.m */; };
 		FE5142FD1F387701006EFF81 /* HL_UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FC1F387701006EFF81 /* HL_UserTableViewCell.m */; };
 		FE5143001F38A1FF006EFF81 /* HL_SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */; };
@@ -145,6 +146,8 @@
 		FE2571531F4046FF004426C1 /* MySingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySingleton.h; sourceTree = "<group>"; };
 		FE2571541F4046FF004426C1 /* MySingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySingleton.m; sourceTree = "<group>"; };
 		FE2571551F4046FF004426C1 /* province_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = province_data.json; sourceTree = "<group>"; };
+		FE3CB2891F51CFC800B0C044 /* HL_PhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_PhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		FE3CB28A1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_PhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		FE5142F61F386AFD006EFF81 /* HL_UserHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_UserHeardView.h; sourceTree = "<group>"; };
 		FE5142F71F386AFD006EFF81 /* HL_UserHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_UserHeardView.m; sourceTree = "<group>"; };
 		FE5142FB1F387701006EFF81 /* HL_UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_UserTableViewCell.h; sourceTree = "<group>"; };
@@ -621,6 +624,8 @@
 			children = (
 				9290E7301F39565800ADEA33 /* HL_CommunityCell.h */,
 				9290E7311F39565800ADEA33 /* HL_CommunityCell.m */,
+				FE3CB2891F51CFC800B0C044 /* HL_PhotoCollectionViewCell.h */,
+				FE3CB28A1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 				92359F951F32B73E002B4538 /* HL_JudgeLoginTool.m in Sources */,
 				FE25714A1F402861004426C1 /* HL_LoginInputView.m in Sources */,
 				92E6CE9F1F33286700FE07ED /* HL_MainViewController.m in Sources */,
+				FE3CB28B1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m in Sources */,
 				92359FB41F32E882002B4538 /* HL_LoginViewController.m in Sources */,
 				92E6CE7D1F3306C500FE07ED /* HL_PhotoManager.m in Sources */,
 				92359F6C1F32B081002B4538 /* AppDelegate.m in Sources */,
@@ -897,6 +903,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -946,6 +953,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -972,7 +980,9 @@
 			baseConfigurationReference = 1E278F7F34A977B3F520C934 /* Pods-Meet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = PUD3AK4R32;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Meet/ThirdTools",
@@ -1061,7 +1071,9 @@
 			baseConfigurationReference = D65823FC04B3C6E74EF357EC /* Pods-Meet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = PUD3AK4R32;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Meet/ThirdTools",

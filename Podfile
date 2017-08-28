@@ -1,14 +1,16 @@
 target 'Meet' do
 platform:ios,'8.0'
 pod 'AFNetworking'
-pod 'ReactiveCocoa','~>2.5'
+pod 'ReactiveCocoa'
 pod 'FMDB'
 pod 'MJRefresh'
 pod 'MJExtension'
 pod 'Masonry'
-pod 'SDWebImage','~>3.7.6'
+pod 'SDWebImage'
 pod 'YYText'
 pod 'YYCategories'
-pod 'MBProgressHUD','~>0.9.1'
+pod 'MBProgressHUD'
 pod 'NIMSDK'
+pod 'DZNEmptyDataSet'
+
 end

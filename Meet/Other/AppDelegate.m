@@ -11,8 +11,6 @@
 #import "HL_UserWarpper.h"
 #import "HL_JudgeLoginTool.h"
 
-#import <NIMSDK/NIMSDK.h>
-
 @interface AppDelegate ()
 
 @end
@@ -41,12 +39,12 @@
 
 - (void)registIM {
 
-    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:@"APPKEY"];
-    
-    option.apnsCername = @"推送证书名称";
-    option.pkCername   = @"推送证书名称";
-    
-    [[NIMSDK sharedSDK] registerWithOption:option];
+//    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:@"APPKEY"];
+//    
+//    option.apnsCername = @"推送证书名称";
+//    option.pkCername   = @"推送证书名称";
+//    
+//    [[NIMSDK sharedSDK] registerWithOption:option];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

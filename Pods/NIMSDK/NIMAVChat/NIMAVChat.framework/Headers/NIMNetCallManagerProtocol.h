@@ -201,7 +201,7 @@ typedef NS_ENUM(NSInteger, NIMNetCallCamera){
  @param error 断开的原因，如果是 nil 表示正常退出
  */
 - (void)onCallDisconnected:(UInt64)callID
-                 withError:(NSError *)error;
+                 withError:(nullable NSError *)error;
 
 /**
  *  收到对方网络通话控制信息，用于方便通话双方沟通信息
@@ -589,7 +589,7 @@ typedef NS_ENUM(NSInteger, NIMNetCallCamera){
 /**
  *  设置视频最大编码码率
  *
- *  @param bitrate 最大编码码率
+ *  @param bitrate 最大编码码率 (bps)
  *
  *  @return 是否设置成功
  */
@@ -624,9 +624,9 @@ typedef NS_ENUM(NSInteger, NIMNetCallCamera){
 /**
  *  发送视频 SampleBuffer
  *
- *  @param buffer 只支持包含以下三种 CVPixelBuffer 数据格式的 sampleBuffer: kCVPixelFormatType_32BGRA、kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange、kCVPixelFormatType_420YpCbCr8BiPlanarFUllRange
+ *  @param buffer 只支持包含以下三种 CVPixelBuffer 数据格式的 sampleBuffer: kCVPixelFormatType_32BGRA、kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange、kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
  *
- *  @discussion 发送的视频数据需要是从 videoHandler 获取到的数据，并且需要填入回调时该画面对应的时间戳，否则对端的视频播放时序会被破坏
+ *  @discussion 可以发送SDK回调上来的视频数据，也可以发送自定义视频数据 自定义数据输入不能超过720P
  *
  *  @return 发送结果
  */

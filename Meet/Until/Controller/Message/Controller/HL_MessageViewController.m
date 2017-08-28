@@ -10,6 +10,8 @@
 
 @interface HL_MessageViewController ()
 
+@property (nonatomic, strong) UILabel *messageLbl;
+
 @end
 
 @implementation HL_MessageViewController
@@ -24,9 +26,17 @@
 #pragma mark - Private Method
 
 - (void)defaultConfig {
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 
-    self.view.backgroundColor = [UIColor purpleColor];
+    [self.view addSubview:self.messageLbl];
 
+    [self.messageLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@35);
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.view);
+        make.width.equalTo(@20).priorityLow(250);
+    }];
 }
 
 #pragma mark - Public Method
@@ -34,6 +44,18 @@
 #pragma mark - Delegate
 
 #pragma mark - Setter And Getter
+
+- (UILabel *)messageLbl {
+
+    if (!_messageLbl) {
+        _messageLbl           = [[UILabel alloc] init];
+        _messageLbl.text      = @"暂无消息";
+        _messageLbl.font      = [UIFont systemFontOfSize:16];
+        _messageLbl.textColor = [UIColor grayColor];
+    }
+    
+    return _messageLbl;
+}
 
 #pragma mark - Dealloc
 
