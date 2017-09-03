@@ -10,6 +10,8 @@
 
 #import "HL_ConfigModel.h"
 
+#import "HL_CommunityView.h"
+
 @interface HL_UserTableViewCell ()
 <
     UIScrollViewDelegate
@@ -19,7 +21,10 @@
 @property (nonatomic, strong) UILabel *cataryLbl;
 @property (nonatomic, strong) UILabel *contantLbl;
 
+@property (nonatomic, strong) HL_CommunityView *communityView;
+
 @property (nonatomic, strong) UIImageView *iconImageView;
+@property (nonatomic, strong) UIImageView *rightImageView;
 
 @property (nonatomic, strong) UIScrollView *photoScrollView;
 
@@ -42,6 +47,7 @@
 
 - (void)createUI {
 
+    //图片
     [self.contentView addSubview:self.iconImageView];
     
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -51,6 +57,7 @@
         make.left.equalTo(self.contentView).offset(15);
     }];
 
+    //标题
     [self.contentView addSubview:self.cataryLbl];
     
     [self.cataryLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -60,6 +67,7 @@
         make.left.equalTo(self.iconImageView.mas_right).offset(10);
     }];
     
+    //线条
     [self.contentView addSubview:self.lineLbl];
     
     [self.lineLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -69,6 +77,14 @@
         make.left.equalTo(self.iconImageView.mas_right).offset(5);
     }];
     
+    //右边的图片
+    [self.contentView addSubview:self.rightImageView];
+    
+    [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.contentView);
+        make.right.equalTo(self.contentView).offset(RELATIVE_X(-30));
+        make.size.mas_equalTo(CGSizeMake(RELATIVE_WIDTH(18), RELATIVE_HEIGHT(31)));
+    }];
 }
 
 - (void)addScrollView {
@@ -84,6 +100,19 @@
     
 }
 
+- (void)addCommunityView {
+    
+    [self.contentView addSubview:self.communityView];
+    
+    [self.communityView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView);
+        make.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.lineLbl.mas_bottom);
+    }];
+    
+}
+
 #pragma mark - Publish Method
 
 #pragma mark - Delegate
@@ -95,13 +124,13 @@
     switch (type) {
         case CellType_Setting:
         {
-        
+            
         }
             break;
             
         case CellType_Dynamic:
         {
-        
+            [self addCommunityView];
         }
             break;
         case CellType_Photo:
@@ -119,7 +148,8 @@
     
     self.cataryLbl.text      = configModel.title;
     self.iconImageView.image = [UIImage imageNamed:configModel.leftImgStr];
-
+    self.rightImageView.hidden = !(configModel.rightImgStr.length > 0);
+    self.rightImageView.image  = [UIImage imageNamed:configModel.rightImgStr];
 }
 
 - (void)setPhotoArray:(NSMutableArray *)photoArray {
@@ -148,7 +178,7 @@
             UIImageView *imgView = [[UIImageView alloc] init];
             imgView.image        = [UIImage imageNamed:photoArray[i]];
             
-            imgView.backgroundColor = [UIColor redColor];
+            imgView.backgroundColor     = [UIColor redColor];
             imgView.layer.masksToBounds = YES;
             imgView.layer.cornerRadius  = 8;
             
@@ -164,6 +194,13 @@
         
         [self.photoScrollView setContentSize:CGSizeMake(photoArray.count*(95), 0)];
     }
+}
+
+- (void)setCommunityCount:(NSInteger)communityCount {
+
+    _communityCount = communityCount;
+    
+    self.communityView.communityCount = communityCount;
 }
 
 - (UILabel *)lineLbl {
@@ -199,6 +236,15 @@
     return _iconImageView;
 }
 
+- (UIImageView *)rightImageView {
+
+    if (!_rightImageView) {
+        _rightImageView = [[UIImageView alloc] init];
+    }
+    
+    return _rightImageView;
+}
+
 - (UIScrollView *)photoScrollView {
 
     if (!_photoScrollView) {
@@ -210,5 +256,13 @@
     return _photoScrollView;
 }
 
+- (HL_CommunityView *)communityView {
+
+    if (!_communityView) {
+        _communityView = [[HL_CommunityView alloc] init];
+    }
+    
+    return _communityView;
+}
 
 @end

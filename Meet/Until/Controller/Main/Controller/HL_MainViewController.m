@@ -83,7 +83,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return RELATIVE_HEIGHT(IPHONE5?780:860);
+    return RELATIVE_HEIGHT(IPHONE5?780:480);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

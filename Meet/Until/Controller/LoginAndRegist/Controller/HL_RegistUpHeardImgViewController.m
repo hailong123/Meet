@@ -237,7 +237,7 @@
         _nextBtn.tag   = 200;
 
         _nextBtn.titleLabel.font = [UIFont systemFontOfSize:20 weight:15];
-        _nextBtn.backgroundColor = [UIColor colorWithHexString:@"#BABBBC"];
+        _nextBtn.backgroundColor = DEFAULT_GRAY_COLOR;
         
         _nextBtn.layer.masksToBounds = YES;
         _nextBtn.layer.cornerRadius  = 55/2;
@@ -318,7 +318,7 @@
         UILabel *lbl      = [[UILabel alloc] init];
         lbl.text          = MEET_REGIST_MODIFY_SEX_TITLE;
         lbl.font          = [UIFont systemFontOfSize:15 weight:10];
-        lbl.textColor     = [UIColor colorWithHexString:@"#BABBBC"];
+        lbl.textColor     = DEFAULT_GRAY_COLOR;
         lbl.textAlignment = NSTextAlignmentLeft;
         
         [_footView addSubview:lbl];

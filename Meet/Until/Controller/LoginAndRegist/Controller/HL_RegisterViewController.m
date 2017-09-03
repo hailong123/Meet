@@ -123,7 +123,7 @@
 
 - (void)changeBtnToNoUse {
 
-    self.nextBtn.backgroundColor        = [UIColor colorWithHexString:@"#BABBBC"];
+    self.nextBtn.backgroundColor        = DEFAULT_GRAY_COLOR;
     self.nextBtn.userInteractionEnabled = NO;
     
     [self.nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -213,7 +213,7 @@ replacementString:(NSString *)string {
         [_nextBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         
         _nextBtn.titleLabel.font        = [UIFont systemFontOfSize:20 weight:15];
-        _nextBtn.backgroundColor        = [UIColor colorWithHexString:@"#BABBBC"];;
+        _nextBtn.backgroundColor        = DEFAULT_GRAY_COLOR;
         _nextBtn.layer.cornerRadius     = 55/2;
         _nextBtn.layer.masksToBounds    = YES;
         _nextBtn.userInteractionEnabled = NO;

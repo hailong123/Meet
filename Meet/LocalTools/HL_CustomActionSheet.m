@@ -49,6 +49,13 @@ typedef void(^showControllerBlock)(id controller);
 #pragma mark - ActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
+    if (buttonIndex == 2) {
+        
+        [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
+        
+        return;
+    }
+    
     UIImagePickerControllerSourceType sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     UIImagePickerController *pickerController   = [[UIImagePickerController alloc] init];

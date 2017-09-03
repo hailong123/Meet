@@ -34,4 +34,7 @@
 #define MEET_LOGIN_PHONE_TEXTFIELD_TEXT    @"请输入账号"
 #define MEET_LOGIN_PASSWORD_TEXTFIELD_TEXT @"请输入密码"
 
+#pragma mark - 我的
+#define MEET_USER_COMMUNITY_HASNO_TITLE @"目前暂未发布心情动态"
+
 #endif /* MeetTitleHeard_h */

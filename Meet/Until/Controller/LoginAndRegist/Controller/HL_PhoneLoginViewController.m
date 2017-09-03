@@ -16,7 +16,8 @@
 
 @interface HL_PhoneLoginViewController ()
 <
-    HL_LoginInputViewDelegate
+    HL_LoginInputViewDelegate,
+    UITextFieldDelegate
 >
 
 @property (nonatomic, strong) HL_LoginInputView *passwordView;
@@ -25,6 +26,9 @@
 @property (nonatomic, strong) UIButton *logionBtn;
 @property (nonatomic, strong) UIButton *forgetBtn;
 @property (nonatomic, strong) UIButton *registBtn;
+
+@property (nonatomic, assign) BOOL phoneSwitch;
+@property (nonatomic, assign) BOOL passwordSwitch;
 
 @end
 
@@ -100,7 +104,7 @@
 - (void)clickBtn:(UIButton *)btn {
 
     switch (btn.tag) {
-        case 100:
+        case 600:
         {
             HL_JudgeLoginTool *loginTool = [[HL_JudgeLoginTool alloc] init];
             
@@ -109,12 +113,12 @@
         }
             break;
             
-        case 200:
+        case 700:
         {
         
         }
             break;
-        case 300:
+        case 800:
         {
             HL_RegisterViewController *registVC = [[HL_RegisterViewController alloc] init];
             
@@ -135,6 +139,43 @@
     
 }
 
+#pragma mark UITextFieldDelegate
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+
+    NSString *textFieldStr = [textField.text stringByReplacingCharactersInRange:range
+                                                                     withString:string];
+    
+    
+    if (self.passwordSwitch && self.phoneSwitch) {
+        self.logionBtn.backgroundColor        = DEFAULT_COLOR;
+        self.logionBtn.userInteractionEnabled = YES;
+        [self.logionBtn setTitleColor:[UIColor blackColor]
+                             forState:UIControlStateNormal];
+    }
+    
+    switch (textField.tag) {
+        case 100:
+        {
+            self.phoneSwitch = textFieldStr.length >= 11;
+            
+            return !(textFieldStr.length > 11);
+        }
+            break;
+            
+        case 200:
+        {
+            self.passwordSwitch = textFieldStr.length >= 8;
+            
+            return !(textFieldStr.length > 18);
+        }
+            break;
+    }
+    
+    return YES;
+}
+
 #pragma mark - Setter And Getter
 
 - (HL_LoginInputView *)phoneLoginView {
@@ -144,8 +185,10 @@
         _phoneLoginView        = [[HL_LoginInputView alloc] init];
         _phoneLoginView.tag    = 400;
         _phoneLoginView.imgStr = @"";
-        _phoneLoginView.placeholderStr    = MEET_LOGIN_PHONE_TEXTFIELD_TEXT;
-        _phoneLoginView.loginViewDelegate = self;
+        _phoneLoginView.placeholderStr          = MEET_LOGIN_PHONE_TEXTFIELD_TEXT;
+        _phoneLoginView.inputTextField.tag      = 100;
+        _phoneLoginView.loginViewDelegate       = self;
+        _phoneLoginView.inputTextField.delegate = self;
         
     }
     
@@ -160,7 +203,10 @@
         _passwordView.imgStr = @"edit-ico4";
         _passwordView.inputType         = InputViewType_Password;
         _passwordView.placeholderStr    = MEET_LOGIN_PASSWORD_TEXTFIELD_TEXT;
-        _passwordView.loginViewDelegate = self;
+        _passwordView.inputTextField.tag      = 200;
+        _passwordView.loginViewDelegate       = self;
+        _passwordView.inputTextField.delegate = self;
+        
     }
     
     return _passwordView;
@@ -171,14 +217,15 @@
     if (!_logionBtn) {
         
         _logionBtn     = [UIButton buttonWithType:UIButtonTypeCustom];
-        _logionBtn.tag = 100;
+        _logionBtn.tag = 600;
         
         [_logionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_logionBtn setTitle:MEET_LOGIN_LOGIN_BTN_TITLE forState:UIControlStateNormal];
         [_logionBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         
-        _logionBtn.backgroundColor = [UIColor colorWithHexString:@"#BABBBC"];
-        _logionBtn.titleLabel.font = [UIFont systemFontOfSize:20 weight:15];
+        _logionBtn.backgroundColor        = DEFAULT_GRAY_COLOR;
+        _logionBtn.titleLabel.font        = [UIFont systemFontOfSize:20 weight:13];
+//        _logionBtn.userInteractionEnabled = NO;
         
         _logionBtn.layer.masksToBounds = YES;
         _logionBtn.layer.cornerRadius  = 55/2;
@@ -197,7 +244,7 @@
     if (!_forgetBtn) {
         
         _forgetBtn                 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _forgetBtn.tag             = 200;
+        _forgetBtn.tag             = 700;
         _forgetBtn.titleLabel.font = [UIFont systemFontOfSize:13.5];
         
         [_forgetBtn setTitleColor:[UIColor colorWithHexString:@"#777777"] forState:UIControlStateNormal];
@@ -219,7 +266,7 @@
     if (!_registBtn) {
         
         _registBtn                 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _registBtn.tag             = 300;
+        _registBtn.tag             = 800;
         _registBtn.titleLabel.font          = [UIFont systemFontOfSize:13.5];
         _registBtn.titleLabel.textAlignment = NSTextAlignmentRight;
         

@@ -13,11 +13,13 @@
 #import "HL_CommunityModel.h"
 
 #import "HL_EditViewController.h"
+#import "HL_UserViewController.h"
 
 @interface HL_CommunityViewController ()
 <
     UITableViewDelegate,
-    UITableViewDataSource
+    UITableViewDataSource,
+    HL_CommunityCellDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -76,14 +78,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return RELATIVE_HEIGHT(IPHONE5?780:860);
+    return RELATIVE_HEIGHT(IPHONE5?780:IPHONE6_PLUS?980:880);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     HL_CommunityCell *cell = [tableView dequeueReusableCellWithIdentifier:[HL_CommunityCell description]];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.communityModel = self.dataSource[indexPath.row];
+    cell.communityCellDelegate = self;
     
     return cell;
 }
@@ -101,6 +105,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return CGFLOAT_MIN;
+}
+
+#pragma mark HLCommunityCellDelegate
+- (void)communityCell:(HL_CommunityCell *)communityCell {
+
+    HL_UserViewController *userVC = [[HL_UserViewController alloc] init];
+    
+    [self.navigationController pushViewController:userVC animated:YES];
 }
 
 #pragma mark - Setter And Getter
@@ -140,7 +152,9 @@
         communityModel.praiseCount  = @"5";
         communityModel.messageCount = @"10";
         
-        communityModel.photoImgArray = @[@"icon",@"icon",@"icon"];
+        communityModel.photoImgArray = @[@"icon2",@"icon",@"icon2",
+                                         @"icon",@"icon2",@"icon",
+                                         @"icon2",];
         
         [_dataSource addObject:communityModel];
     }

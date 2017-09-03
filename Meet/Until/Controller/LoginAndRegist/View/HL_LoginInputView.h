@@ -33,6 +33,8 @@ IB_DESIGNABLE
 
 @property (nonatomic, assign) InputViewType inputType;
 
+@property (nonatomic, strong) UITextField *inputTextField;
+
 @property (nonatomic, copy) NSString *imgStr;
 @property (nonatomic, copy) NSString *placeholderStr;
 

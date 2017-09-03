@@ -8,13 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@class HL_CommunityCell;
+
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol HL_CommunityCellDelegate <NSObject>
+
+- (void)communityCell:(HL_CommunityCell *)communityCell;
+
+@end
 
 @class HL_CommunityModel;
 
 @interface HL_CommunityCell : UITableViewCell
 
 @property (nonatomic, strong) HL_CommunityModel *communityModel;
+
+@property (nonatomic, assign) id <HL_CommunityCellDelegate> communityCellDelegate;
 
 @end
 

@@ -13,15 +13,17 @@
 + (HL_ConfigModel *)createConfigModelWithTitle:(NSString *)title
                                       subTitle:(NSString *)subTitle
                                     leftImgStr:(NSString *)leftImgStr
+                                   rightImgStr:(NSString *)rightStr
                                     customItem:(BOOL)customItem {
 
     
     HL_ConfigModel *configModel = [[HL_ConfigModel alloc] init];
     
-    configModel.title      = title;
-    configModel.subTitle   = subTitle;
-    configModel.leftImgStr = leftImgStr;
-    configModel.customItem = customItem;
+    configModel.title       = title;
+    configModel.subTitle    = subTitle;
+    configModel.leftImgStr  = leftImgStr;
+    configModel.rightImgStr = rightStr;
+    configModel.customItem  = customItem;
     
     return configModel;
 }

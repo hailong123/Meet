@@ -221,7 +221,7 @@
                          action:@selector(clickBtn:)
                forControlEvents:UIControlEventTouchUpInside];
         
-        _verifierBtn.backgroundColor = [UIColor colorWithHexString:@"#BABBBC"];
+        _verifierBtn.backgroundColor = DEFAULT_GRAY_COLOR;
     }
     
     return _verifierBtn;
@@ -273,7 +273,7 @@
         _nextBtn.tag   = 100;
         
         _nextBtn.titleLabel.font = [UIFont systemFontOfSize:16 weight:13];
-        _nextBtn.backgroundColor = [UIColor colorWithHexString:@"#BABBBC"];
+        _nextBtn.backgroundColor = DEFAULT_GRAY_COLOR;
         
         _nextBtn.layer.masksToBounds = YES;
         _nextBtn.layer.cornerRadius  = 55/2;
@@ -302,7 +302,7 @@
                               value:[UIColor colorWithHexString:@"#0F92BC"]
                               range:NSMakeRange(5, 12)];
         [attributedStr addAttribute:NSForegroundColorAttributeName
-                              value:[UIColor colorWithHexString:@"#BABBBC"]
+                              value:DEFAULT_GRAY_COLOR
                               range:NSMakeRange(0, 5)];
         [attributedStr addAttribute:NSFontAttributeName
                               value:[UIFont systemFontOfSize:12 weight:10]

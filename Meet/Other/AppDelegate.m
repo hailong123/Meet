@@ -28,7 +28,7 @@
 }
 
 - (void)judgeLoginStatus {
-
+    
     HL_JudgeLoginTool *loginTool = [[HL_JudgeLoginTool alloc] init];
     
     [HL_UserWarpper sharedInstance].logined = YES;
@@ -39,6 +39,8 @@
 
 - (void)registIM {
 
+    self.window.backgroundColor = [UIColor whiteColor];
+    
 //    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:@"APPKEY"];
 //    
 //    option.apnsCername = @"推送证书名称";

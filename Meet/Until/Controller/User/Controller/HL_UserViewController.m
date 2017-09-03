@@ -101,7 +101,8 @@
     switch (indexPath.section) {
         case 0:
         {
-            cell.type = CellType_Dynamic;
+            cell.type           = CellType_Dynamic;
+            cell.communityCount = 0;
         }
             break;
             

@@ -54,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TZImagePickerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XLPhotoBrowser+CoderXL.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YYCategories.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,7 +87,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>30D6286BB589B4CCB2A8E6EE54FFD38C</key>
+		<key>33E2CD27FABE6952B1041E62ECB37B6E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49DA13C206ABFF9A2863F685CDCC0805</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +102,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CFFE2940B17F00489C7D8E4CB661363</key>
+		<key>56A8E4A2FE3374F0C284BC5E1CC4A3BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6EE8367B0BB11DCC153FA321E3D111C1</key>
+		<key>6127E5417B643FDF4AD43B70E13441D2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7FA4C94FCAD1C930CC842430D217AD6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,7 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9365F6EEB1B12E68C7ED1CC98FFF1743</key>
+		<key>8DB475BCA9FD31F49274CC16F633D2F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D7A851F52A0122D7B123EA30E85354C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -118,11 +143,6 @@
 			<true/>
 		</dict>
 		<key>A316B54C67E947D23CECD230FA5BFAEF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F05C620FE0C21B9D5AC2623655872424</key>
 		<dict>
 			<key>primary</key>
 			<true/>

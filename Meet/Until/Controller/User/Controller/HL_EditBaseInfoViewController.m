@@ -8,6 +8,9 @@
 
 #import "HL_EditBaseInfoViewController.h"
 
+#import "HL_PhotoManager.h"
+
+#import "JHPickView.h"
 #import "HL_EditBaseInfoView.h"
 
 static NSString * const kEditBaseInfoCellIdentifier = @"kEditBaseInfoCellIdentifier";
@@ -15,12 +18,16 @@ static NSString * const kEditBaseInfoCellIdentifier = @"kEditBaseInfoCellIdentif
 @interface HL_EditBaseInfoViewController ()
 <
     UITableViewDelegate,
-    UITableViewDataSource
+    UITableViewDataSource,
+    JHPickerDelegate,
+    HL_EditBaseInfoViewDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *dataSources;
+
+@property (nonatomic, strong) HL_PhotoManager *photoManager;
 
 @property (nonatomic, strong) HL_EditBaseInfoView *baseInfoView;
 
@@ -91,12 +98,71 @@ static NSString * const kEditBaseInfoCellIdentifier = @"kEditBaseInfoCellIdentif
     return tableViewCell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    if (indexPath.row != 0) {
+        
+        JHPickView *pickView = [[JHPickView alloc] initWithFrame:self.view.bounds];
+        
+        switch (indexPath.row) {
+                
+            case 1:
+            {
+                pickView.arrayType  = DeteArray;
+            }
+                break;
+            case 2:
+            {
+                pickView.arrayType = HeightArray;
+            }
+                break;
+            case 3:
+            {
+                pickView.arrayType = AreaArray;
+            }
+                break;
+                
+        }
+        
+        pickView.delegate = self;
+        pickView.indexRow = indexPath.row;
+        
+        [self.view addSubview: pickView];
+        
+    }
+
+    
+}
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return self.baseInfoView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return RELATIVE_HEIGHT(450);
+}
+
+
+//JHPickerViewDelegate
+- (void)PickerSelectorIndixString:(NSString *)str indexRow:(NSInteger)row {
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    UITableViewCell *cell       = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.detailTextLabel.text   = str;
+    
+}
+
+//HL_EditInfoViewDelegate
+- (void)editBaseInfoView:(HL_EditBaseInfoView *)infoView {
+ 
+    [self.photoManager choosePhotoWithController:self completion:^(UIImage * _Nonnull img) {
+        [infoView.heardButton setImage:img forState:UIControlStateNormal];
+    }];
+    
 }
 
 #pragma mark - Setter And Getter
@@ -133,9 +199,19 @@ static NSString * const kEditBaseInfoCellIdentifier = @"kEditBaseInfoCellIdentif
     if (!_baseInfoView) {
         
         _baseInfoView = [[HL_EditBaseInfoView alloc] init];
+        _baseInfoView.infoViewDelegate = self;
     }
     
     return _baseInfoView;
+}
+
+- (HL_PhotoManager *)photoManager {
+    
+    if (!_photoManager) {
+        _photoManager = [[HL_PhotoManager alloc] init];
+    }
+    
+    return _photoManager;
 }
 
 #pragma Delloc

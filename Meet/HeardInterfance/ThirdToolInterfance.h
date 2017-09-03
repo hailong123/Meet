@@ -18,6 +18,7 @@
 #import "MBProgressHUD.h"
 #import "ReactiveCocoa.h"
 #import "UIImageView+WebCache.h"
+#import "TZImagePickerController.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import <YYCategories/YYCategories.h>
 

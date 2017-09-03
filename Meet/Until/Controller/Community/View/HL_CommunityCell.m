@@ -10,11 +10,17 @@
 #import "HL_PhotoCollectionViewCell.h"
 
 #import "HL_CommunityModel.h"
+#import "HL_LikeAndMessageView.h"
+
+#import "XLPhotoBrowser.h"
 
 @interface HL_CommunityCell ()
 <
     UICollectionViewDelegate,
-    UICollectionViewDataSource
+    UICollectionViewDataSource,
+    XLPhotoBrowserDelegate,
+    XLPhotoBrowserDatasource,
+    HL_LikeAndMessageViewDelegate
 >
 
 @property (nonatomic, strong) UILabel *timeLbl;
@@ -26,8 +32,8 @@
 @property (nonatomic, strong) UIImageView *iconImgView;
 @property (nonatomic, strong) UIImageView *timeImgView;
 
-@property (nonatomic, strong) UIButton *likeBtn;
-@property (nonatomic, strong) UIButton *messageBtn;
+@property (nonatomic, strong) HL_LikeAndMessageView *likeBtnView;
+@property (nonatomic, strong) HL_LikeAndMessageView *messageBtnView;
 
 @property (nonatomic, strong) UIView *photoInfoView;
 
@@ -37,7 +43,12 @@
 
 @end
 
-@implementation HL_CommunityCell
+@implementation HL_CommunityCell {
+    struct {
+        unsigned int HL_CommunityCellDelegate : 1;
+    }_hasDes;
+    
+}
 
 #pragma mark - Life Cycle
 
@@ -56,7 +67,7 @@
 
 
 - (void)defaultConfig {
-
+    //头像
     [self.contentView addSubview:self.iconImgView];
     
     [self.iconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,6 +76,7 @@
         make.left.equalTo(self.contentView).offset(10);
     }];
     
+    //昵称
     [self.contentView addSubview:self.nickNameLbl];
     
     [self.nickNameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -74,7 +86,7 @@
         make.left.equalTo(self.iconImgView.mas_right).offset(10);
     }];
     
-    
+    //性别
     [self.contentView addSubview:self.sexImgView];
     
     [self.sexImgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,6 +95,7 @@
         make.top.equalTo(self.nickNameLbl.mas_bottom).offset(5);
     }];
     
+    //年级
     [self.contentView addSubview:self.ageLbl];
     
     [self.ageLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,6 +105,7 @@
         make.width.equalTo(self.sexImgView).multipliedBy(0.5);
     }];
     
+    //简介
     [self.contentView addSubview:self.introLbl];
     
     [self.introLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -101,6 +115,7 @@
         make.top.equalTo(self.sexImgView.mas_bottom).offset(10);
     }];
     
+    //时间
     [self.contentView addSubview:self.timeLbl];
     
     [self.timeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -110,6 +125,7 @@
         make.width.equalTo(@20).priorityLow(250);
     }];
 
+    //时间图片
     [self.contentView addSubview:self.timeImgView];
     
     [self.timeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -118,33 +134,35 @@
         make.right.equalTo(self.timeLbl.mas_left).offset(-3);
     }];
     
-    [self.contentView addSubview:self.likeBtn];
+    //点赞
+    [self.contentView addSubview:self.likeBtnView];
     
-    [self.likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@20);
-        make.height.equalTo(@20);
+    [self.likeBtnView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.nickNameLbl);
-        make.bottom.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView).offset(RELATIVE_Y(-20));
+        make.size.mas_equalTo(CGSizeMake(RELATIVE_WIDTH(100), RELATIVE_HEIGHT(40)));
     }];
     
-    [self.contentView addSubview:self.messageBtn];
+    //消息
+    [self.contentView addSubview:self.messageBtnView];
     
-    [self.messageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@20);
-        make.height.equalTo(@20);
-        make.centerY.equalTo(self.likeBtn);
-        make.left.equalTo(self.likeBtn.mas_right).offset(15);
+    [self.messageBtnView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.equalTo(self.likeBtnView);
+        make.centerY.equalTo(self.likeBtnView);
+        make.left.equalTo(self.likeBtnView.mas_right).offset(15);
     }];
     
+    //相册
     [self.contentView addSubview:self.photoInfoView];
     
     [self.photoInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.introLbl);
         make.left.equalTo(self.nickNameLbl);
         make.top.equalTo(self.introLbl.mas_bottom).offset(15);
-        make.bottom.equalTo(self.messageBtn.mas_top).offset(-15);
+        make.bottom.equalTo(self.messageBtnView.mas_top).offset(RELATIVE_Y(-15));
     }];
 
+    //相册列表
     [self.photoInfoView addSubview:self.collectionView];
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -154,25 +172,32 @@
     }];
 }
 
-- (void)clickLikeBtn:(UIButton *)btn {
-
-}
-
-- (void)clickMessageBtn:(UIButton *)btn {
-
-}
-
-
 #pragma mark - Public Method
 
 #pragma mark - Delegate
 
 #pragma mark UICollectionViewDelegate
 
+- (void)collectionView:(UICollectionView *)collectionView
+didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    // 快速创建并进入浏览模式
+    XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithCurrentImageIndex:indexPath.row
+                                                                         imageCount:self.dataSources.count
+                                                                         datasource:self];
+    
+    
+    // 自定义一些属性
+    browser.currentPageDotColor = [UIColor whiteColor];
+    browser.browserStyle        = XLPhotoBrowserStyleSimple;
+    browser.pageControlStyle    = XLPhotoBrowserPageControlStyleAnimated;///< 修改底部pagecontrol的样式为系统样式,默认是弹性动画的样式
+    browser.delegate            = self;
+}
+
 #pragma mark UICollectionDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
-    return 9;
+    return self.dataSources.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -181,9 +206,65 @@
     HL_PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[HL_PhotoCollectionViewCell description]
                                                                                  forIndexPath:indexPath];
     
-    cell.photoImageView.image = [UIImage imageNamed:@"icon"];
+    cell.photoImageView.image = [UIImage imageNamed:self.dataSources[indexPath.row]];
     
     return cell;
+}
+
+#pragma mark XLPhotoBrowserDatasource
+
+/**
+ *  返回这个位置的占位图片 , 也可以是原图(如果不实现此方法,会默认使用placeholderImage)
+ *
+ *  @param browser 浏览器
+ *  @param index   位置索引
+ *
+ *  @return 占位图片
+ */
+- (UIImage *)photoBrowser:(XLPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index {
+    
+    NSString *imgStr = self.dataSources[index];
+    
+    return [UIImage imageNamed:imgStr];
+}
+
+/**
+ *  返回指定位置的高清图片URL
+ *
+ *  @param browser 浏览器
+ *  @param index   位置索引
+ *
+ *  @return 返回高清大图索引
+ */
+//- (NSURL *)photoBrowser:(XLPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index {
+//    JH_ChatRoomBaseModel *model = self.viewModel.photoSourceArr[index];
+//    
+//    return [NSURL URLWithString:DEF_OBJECT_TO_STIRNG(model.chatFileModel.file.url)];
+//}
+
+#pragma mark HL_LikeAndMessageDelegate
+- (void)likeAndMessageView:(HL_LikeAndMessageView *)view {
+
+    switch (view.type) {
+        case ViewType_Like:
+        {
+            [[iToast makeText:@"点赞"] show];
+        }
+            break;
+            
+        case ViewType_Message:
+        {
+            [[iToast makeText:@"消息"] show];
+        }
+            break;
+    }
+
+}
+
+- (void)clickIconImageVie:(UITapGestureRecognizer *)tap {
+    if (_hasDes.HL_CommunityCellDelegate) {
+        [self.communityCellDelegate communityCell:self];
+    }
 }
 
 #pragma mark - Setter And Getter
@@ -198,19 +279,10 @@
     self.introLbl.text    = communityModel.intro;
     self.nickNameLbl.text = communityModel.nickName;
     
-    [self.messageBtn setTitle:communityModel.messageCount
-                     forState:UIControlStateNormal];
+    self.likeBtnView.count    = communityModel.praiseCount;
+    self.messageBtnView.count = communityModel.messageCount;
     
-    [self.messageBtn setTitleColor:[UIColor redColor]
-                          forState:UIControlStateNormal];
-    
-    
-    [self.likeBtn setTitle:communityModel.praiseCount
-                  forState:UIControlStateNormal];
-    
-    [self.likeBtn setTitleColor:[UIColor redColor]
-                       forState:UIControlStateNormal];
-    
+    self.dataSources = communityModel.photoImgArray;
 }
 
 - (UILabel *)timeLbl {
@@ -263,6 +335,10 @@
         _iconImgView.layer.masksToBounds = YES;
         _iconImgView.layer.cornerRadius  = 40/2;
         _iconImgView.contentMode         = UIViewContentModeScaleAspectFill;
+        _iconImgView.userInteractionEnabled = YES;
+        
+        [_iconImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                   action:@selector(clickIconImageVie:)]];
     }
     
     return _iconImgView;
@@ -278,39 +354,27 @@
     return _sexImgView;
 }
 
-- (UIButton *)likeBtn {
+- (HL_LikeAndMessageView *)likeBtnView {
 
-    if (!_likeBtn) {
-    
-        _likeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_likeBtn setImage:[UIImage imageNamed:@"news-good"]
-                  forState:UIControlStateNormal];
-        
-        [_likeBtn addTarget:self
-                     action:@selector(clickLikeBtn:)
-           forControlEvents:UIControlEventTouchUpInside];
-        
+    if (!_likeBtnView) {
+        _likeBtnView      = [[HL_LikeAndMessageView alloc] init];
+        _likeBtnView.type = ViewType_Like;
+        _likeBtnView.messageViewDelegate = self;
     }
     
-    return _likeBtn;
+    return _likeBtnView;
     
 }
 
-- (UIButton *)messageBtn {
+- (HL_LikeAndMessageView *)messageBtnView {
 
-    if (!_messageBtn) {
-        
-        _messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_messageBtn setImage:[UIImage imageNamed:@"news-chat"]
-                     forState:UIControlStateNormal];
-        
-        [_messageBtn addTarget:self
-                        action:@selector(clickMessageBtn:)
-              forControlEvents:UIControlEventTouchUpInside];
-        
+    if (!_messageBtnView) {
+        _messageBtnView      = [[HL_LikeAndMessageView alloc] init];
+        _messageBtnView.type = ViewType_Message;
+        _messageBtnView.messageViewDelegate = self;
     }
     
-    return _messageBtn;
+    return _messageBtnView;
 }
 
 - (UIView *)photoInfoView {
@@ -318,7 +382,7 @@
     if (!_photoInfoView) {
         
         _photoInfoView = [[UIView alloc] init];
-    
+        _photoInfoView.backgroundColor = [UIColor redColor];
     }
     
     return _photoInfoView;
@@ -353,10 +417,10 @@
     if (!_collectionView) {
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize                = CGSizeMake(RELATIVE_WIDTH(IPHONE5?150:180),
-                                                    RELATIVE_WIDTH(IPHONE5?150:180));
-        layout.minimumLineSpacing      = 10;
-        layout.minimumInteritemSpacing = 10;
+        layout.itemSize                = CGSizeMake(RELATIVE_WIDTH(IPHONE5?150:IPHONE6_PLUS?210:195),
+                                                    RELATIVE_WIDTH(IPHONE5?150:IPHONE6_PLUS?210:195));
+        layout.minimumLineSpacing      = 2.5;
+        layout.minimumInteritemSpacing = 2.5;
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                              collectionViewLayout:layout];
@@ -368,6 +432,22 @@
     }
     
     return _collectionView;
+}
+
+- (NSArray *)dataSources {
+
+    if (!_dataSources) {
+        _dataSources = @[];
+    }
+
+    return _dataSources;
+}
+
+- (void)setCommunityCellDelegate:(id<HL_CommunityCellDelegate>)communityCellDelegate {
+
+    _communityCellDelegate = communityCellDelegate;
+    
+    _hasDes.HL_CommunityCellDelegate = [self.communityCellDelegate respondsToSelector:@selector(communityCell:)];
 }
 
 #pragma mark - Dealloc

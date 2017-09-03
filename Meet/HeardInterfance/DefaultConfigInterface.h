@@ -9,7 +9,8 @@
 #ifndef DefaultConfigInterface_h
 #define DefaultConfigInterface_h
 
-#define DEFAULT_COLOR [UIColor colorWithHexString:@"#FFE326"]
+#define DEFAULT_COLOR      [UIColor colorWithHexString:@"#FFE326"]
+#define DEFAULT_GRAY_COLOR [UIColor colorWithHexString:@"#BABBBC"]
 
 //判断当前设备是不是iPhone4或者4s
 #define IPHONE4S    (([[UIScreen mainScreen] bounds].size.height)==480)

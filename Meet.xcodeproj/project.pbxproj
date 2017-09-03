@@ -50,6 +50,10 @@
 		FE5143001F38A1FF006EFF81 /* HL_SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */; };
 		FE5143031F38A4CA006EFF81 /* HL_SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */; };
 		FE769B0D1F48051A005FC279 /* HL_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */; };
+		FEE56A841F5B9589004ED325 /* HL_LocalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A831F5B9589004ED325 /* HL_LocalTool.m */; };
+		FEE56A871F5BADE4004ED325 /* HL_CommunityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A861F5BADE4004ED325 /* HL_CommunityView.m */; };
+		FEE56A8A1F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A891F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m */; };
+		FEE56A8D1F5BDAE5004ED325 /* HL_LikeAndMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A8C1F5BDAE5004ED325 /* HL_LikeAndMessageView.m */; };
 		FEF487111F4F07AB002A8265 /* HL_EditBaseInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF487101F4F07AB002A8265 /* HL_EditBaseInfoViewController.m */; };
 		FEF487141F4F085C002A8265 /* HL_EditBaseInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF487131F4F085C002A8265 /* HL_EditBaseInfoView.m */; };
 		FEF487171F4F1B3E002A8265 /* HL_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEF487161F4F1B3E002A8265 /* HL_TextView.m */; };
@@ -157,6 +161,14 @@
 		FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SettingCell.m; sourceTree = "<group>"; };
 		FE769B0B1F48051A005FC279 /* HL_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_CommunityModel.h; sourceTree = "<group>"; };
 		FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_CommunityModel.m; sourceTree = "<group>"; };
+		FEE56A821F5B9589004ED325 /* HL_LocalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_LocalTool.h; sourceTree = "<group>"; };
+		FEE56A831F5B9589004ED325 /* HL_LocalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_LocalTool.m; sourceTree = "<group>"; };
+		FEE56A851F5BADE4004ED325 /* HL_CommunityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_CommunityView.h; sourceTree = "<group>"; };
+		FEE56A861F5BADE4004ED325 /* HL_CommunityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_CommunityView.m; sourceTree = "<group>"; };
+		FEE56A881F5BC8D7004ED325 /* HL_AddPhotoScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_AddPhotoScrollerView.h; sourceTree = "<group>"; };
+		FEE56A891F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_AddPhotoScrollerView.m; sourceTree = "<group>"; };
+		FEE56A8B1F5BDAE5004ED325 /* HL_LikeAndMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_LikeAndMessageView.h; sourceTree = "<group>"; };
+		FEE56A8C1F5BDAE5004ED325 /* HL_LikeAndMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_LikeAndMessageView.m; sourceTree = "<group>"; };
 		FEF4870F1F4F07AB002A8265 /* HL_EditBaseInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_EditBaseInfoViewController.h; sourceTree = "<group>"; };
 		FEF487101F4F07AB002A8265 /* HL_EditBaseInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_EditBaseInfoViewController.m; sourceTree = "<group>"; };
 		FEF487121F4F085C002A8265 /* HL_EditBaseInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_EditBaseInfoView.h; sourceTree = "<group>"; };
@@ -261,6 +273,8 @@
 			children = (
 				FE2571421F3FED2C004426C1 /* iToast.h */,
 				FE2571431F3FED2C004426C1 /* iToast.m */,
+				FEE56A821F5B9589004ED325 /* HL_LocalTool.h */,
+				FEE56A831F5B9589004ED325 /* HL_LocalTool.m */,
 				92E6CE7B1F3306C500FE07ED /* HL_PhotoManager.h */,
 				92E6CE7C1F3306C500FE07ED /* HL_PhotoManager.m */,
 				92E6CE7E1F33070B00FE07ED /* HL_PermissionTool.h */,
@@ -299,7 +313,6 @@
 				92359F691F32B081002B4538 /* View */,
 				92359F681F32B081002B4538 /* Model */,
 				92359F671F32B081002B4538 /* Controller */,
-				92359F6A1F32B081002B4538 /* ViewModel */,
 			);
 			path = Until;
 			sourceTree = "<group>";
@@ -332,13 +345,6 @@
 				FEF487161F4F1B3E002A8265 /* HL_TextView.m */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		92359F6A1F32B081002B4538 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		92359F6B1F32B081002B4538 /* UserWrapper */ = {
@@ -516,6 +522,8 @@
 				FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */,
 				FE5142F61F386AFD006EFF81 /* HL_UserHeardView.h */,
 				FE5142F71F386AFD006EFF81 /* HL_UserHeardView.m */,
+				FEE56A851F5BADE4004ED325 /* HL_CommunityView.h */,
+				FEE56A861F5BADE4004ED325 /* HL_CommunityView.m */,
 				FEF487121F4F085C002A8265 /* HL_EditBaseInfoView.h */,
 				FEF487131F4F085C002A8265 /* HL_EditBaseInfoView.m */,
 				FE5142FB1F387701006EFF81 /* HL_UserTableViewCell.h */,
@@ -620,6 +628,10 @@
 			children = (
 				9290E7301F39565800ADEA33 /* HL_CommunityCell.h */,
 				9290E7311F39565800ADEA33 /* HL_CommunityCell.m */,
+				FEE56A8B1F5BDAE5004ED325 /* HL_LikeAndMessageView.h */,
+				FEE56A8C1F5BDAE5004ED325 /* HL_LikeAndMessageView.m */,
+				FEE56A881F5BC8D7004ED325 /* HL_AddPhotoScrollerView.h */,
+				FEE56A891F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m */,
 				FE3CB2891F51CFC800B0C044 /* HL_PhotoCollectionViewCell.h */,
 				FE3CB28A1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m */,
 			);
@@ -812,15 +824,18 @@
 				92E6CE9F1F33286700FE07ED /* HL_MainViewController.m in Sources */,
 				FE3CB28B1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m in Sources */,
 				92359FB41F32E882002B4538 /* HL_LoginViewController.m in Sources */,
+				FEE56A841F5B9589004ED325 /* HL_LocalTool.m in Sources */,
 				92E6CE7D1F3306C500FE07ED /* HL_PhotoManager.m in Sources */,
 				92359F6C1F32B081002B4538 /* AppDelegate.m in Sources */,
 				92359FB61F32E882002B4538 /* HL_RegisterViewController.m in Sources */,
 				FE5143001F38A1FF006EFF81 /* HL_SettingViewController.m in Sources */,
 				92E6CE801F33070B00FE07ED /* HL_PermissionTool.m in Sources */,
+				FEE56A8D1F5BDAE5004ED325 /* HL_LikeAndMessageView.m in Sources */,
 				92780EEB1F399FD200667C69 /* HL_EditViewController.m in Sources */,
 				92359F3D1F32AE49002B4538 /* main.m in Sources */,
 				FE2571581F4046FF004426C1 /* MySingleton.m in Sources */,
 				FE5142FD1F387701006EFF81 /* HL_UserTableViewCell.m in Sources */,
+				FEE56A8A1F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m in Sources */,
 				FE2571561F4046FF004426C1 /* CityModelData.m in Sources */,
 				92359F801F32B54A002B4538 /* HL_BaseNavigationController.m in Sources */,
 				FE2571571F4046FF004426C1 /* JHPickView.m in Sources */,
@@ -830,6 +845,7 @@
 				92E6CEA51F33287E00FE07ED /* HL_CommunityViewController.m in Sources */,
 				9290E7321F39565800ADEA33 /* HL_CommunityCell.m in Sources */,
 				92359F8F1F32B627002B4538 /* HL_UserWarpper.m in Sources */,
+				FEE56A871F5BADE4004ED325 /* HL_CommunityView.m in Sources */,
 				92E6CE7A1F32F06000FE07ED /* HL_RegisteFinishViewController.m in Sources */,
 				FE5143031F38A4CA006EFF81 /* HL_SettingCell.m in Sources */,
 				FE5142F81F386AFD006EFF81 /* HL_UserHeardView.m in Sources */,

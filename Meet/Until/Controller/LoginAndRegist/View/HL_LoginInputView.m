@@ -18,8 +18,6 @@ IB_DESIGNABLE
 
 @property (nonatomic, strong) UIImageView *imgView;
 
-@property (nonatomic, strong) UITextField *inputTextField;
-
 @end
 
 @implementation HL_LoginInputView
@@ -123,9 +121,9 @@ IB_DESIGNABLE
     
     if (!_inputTextField) {
         
-        _inputTextField             = [[UITextField alloc] init];
-        _inputTextField.delegate    = self;
-        _inputTextField.borderStyle = UITextBorderStyleNone;
+        _inputTextField                 = [[UITextField alloc] init];
+        _inputTextField.borderStyle     = UITextBorderStyleNone;
+        _inputTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     }
 
     return _inputTextField;

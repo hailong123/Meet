@@ -84,6 +84,39 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+ 
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        
+        switch (indexPath.row) {
+            case 0:
+            {
+                [[iToast makeText:@"关于我们"] show];
+            }
+                break;
+                
+            case 1:
+            {
+                [[iToast makeText:@"检查更新"] show];
+            }
+                break;
+            case 2:
+            {
+                [[iToast makeText:@"清理缓存"] show];
+            }
+                break;
+            case 3:
+            {
+                [[iToast makeText:@"修改密码"] show];
+            }
+                break;
+        }
+    } else {
+        [[iToast makeText:@"退出登录"] show];
+    }
+}
+
 #pragma mark - Setter And Getter
 
 - (UITableView *)tableView {

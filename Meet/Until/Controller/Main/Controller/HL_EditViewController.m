@@ -9,10 +9,16 @@
 #import "HL_EditViewController.h"
 
 #import "HL_TextView.h"
+#import "HL_AddPhotoScrollerView.h"
 
 @interface HL_EditViewController ()
+<
+    HL_AddPhotoScrollerViewDelegate,
+    TZImagePickerControllerDelegate
+>
 
 @property (nonatomic, strong) HL_TextView *textView;
+@property (nonatomic, strong) HL_AddPhotoScrollerView *photoScrollView;
 
 @end
 
@@ -35,6 +41,7 @@
 
     [self navConfig];
     
+    [self notificatkeyBoard];
 }
 
 - (void)navConfig {
@@ -67,6 +74,7 @@
 
 - (void)createUI {
 
+    //文本输入框
     [self.view addSubview:self.textView];
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,11 +83,84 @@
         make.right.equalTo(self.view).offset(RELATIVE_X(-30));
         make.height.mas_equalTo(kScreenHeight).multipliedBy(0.5);
     }];
+    
+    //图片
+    [self.view addSubview:self.photoScrollView];
+    
+    [self.photoScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+        make.height.mas_equalTo(RELATIVE_HEIGHT(250));
+    }];
+}
+
+- (void) notificatkeyBoard {
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(KeyboardWillHidden:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+
+    
+}
+
+- (void)keyboardWillShow:(NSNotification *)noti {
+    
+    NSValue *aValue    = noti.userInfo[UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    
+    [self.photoScrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.height.mas_equalTo(RELATIVE_HEIGHT(250));
+        make.bottom.mas_equalTo(-keyboardRect.size.height);
+    }];
+
+}
+
+- (void)KeyboardWillHidden:(NSNotification *)noti {
+
+    [self.photoScrollView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.mas_equalTo(self.view);
+        make.height.mas_equalTo(RELATIVE_HEIGHT(250));
+    }];
+    
 }
 
 #pragma mark - Public Method
 
 #pragma mark - Delegate
+
+#pragma mark HL_AddPhotoScrollerViewDelegate
+- (void)addPhotoScrollerView:(HL_AddPhotoScrollerView *)scrollerView {
+
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9
+                                                                                        columnNumber:4
+                                                                                            delegate:self
+                                                                                   pushPhotoPickerVc:YES];
+    
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+    
+}
+
+- (void)imagePickerController:(TZImagePickerController *)picker
+       didFinishPickingPhotos:(NSArray<UIImage *> *)photos
+                 sourceAssets:(NSArray *)assets
+        isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto
+                        infos:(NSArray<NSDictionary *> *)infos {
+
+    [self.photoScrollView.photoArray insertObjects:photos atIndex:0];
+    
+    [self.photoScrollView.collectionView reloadData];
+    
+}
 
 #pragma mark - Setter And Getter
 
@@ -92,6 +173,19 @@
     }
     
     return _textView;
+}
+
+- (HL_AddPhotoScrollerView *)photoScrollView {
+
+    if (!_photoScrollView) {
+        _photoScrollView = [[HL_AddPhotoScrollerView alloc] init];
+        _photoScrollView.backgroundColor = [UIColor redColor];
+        
+        _photoScrollView.photoArray = [@[@""] mutableCopy];
+        _photoScrollView.scrollerViewDelegate = self;
+    }
+    
+    return _photoScrollView;
 }
 
 #pragma mark - Dealloc

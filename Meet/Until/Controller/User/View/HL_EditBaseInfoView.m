@@ -10,16 +10,14 @@
 
 @interface HL_EditBaseInfoView ()
 
-@property (nonatomic, strong) UIImageView *backgroundImgView;
-
-@property (nonatomic, strong) UIButton *heardButton;
-@property (nonatomic, strong) UIButton *photoButton;
-
-@property (nonatomic, strong) UILabel *nickNameLabel;
-
 @end
 
 @implementation HL_EditBaseInfoView
+{
+    struct {
+        unsigned int HL_EditBaseInfoViewDelegate : 1;
+    }_hasDes;
+}
 
 #pragma mark - Life Cycle
 
@@ -76,8 +74,11 @@
     
 }
 
+//点击头像
 - (void)addPhotoButton:(UIButton *)button {
-    
+    if (_hasDes.HL_EditBaseInfoViewDelegate) {
+        [self.infoViewDelegate editBaseInfoView:self];
+    }
 }
 
 #pragma mark - Publish Method
@@ -110,7 +111,7 @@
         _heardButton.layer.masksToBounds = YES;
         [_heardButton addTarget:self
                          action:@selector(addPhotoButton:)
-               forControlEvents:UIControlEventTouchUpOutside];
+               forControlEvents:UIControlEventTouchUpInside];
         
         [_heardButton setBackgroundImage:[UIImage imageNamed:@"icon"]
                                 forState:UIControlStateNormal];
@@ -128,7 +129,7 @@
                                 forState:UIControlStateNormal];
         [_photoButton addTarget:self
                          action:@selector(addPhotoButton:)
-               forControlEvents:UIControlEventTouchUpOutside];
+               forControlEvents:UIControlEventTouchUpInside];
     }
 
     return _photoButton;
@@ -146,6 +147,14 @@
     }
     
     return _nickNameLabel;
+}
+
+- (void)setInfoViewDelegate:(id<HL_EditBaseInfoViewDelegate>)infoViewDelegate {
+
+    _infoViewDelegate = infoViewDelegate;
+    
+    _hasDes.HL_EditBaseInfoViewDelegate = [self.infoViewDelegate respondsToSelector:@selector(editBaseInfoView:)];
+    
 }
 
 #pragma Delloc

@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, CellType) {
 
 @property (nonatomic, strong) NSMutableArray *photoArray;
 
+@property (nonatomic, assign) NSInteger communityCount;
+
 @end
 
 NS_ASSUME_NONNULL_END

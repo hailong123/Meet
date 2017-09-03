@@ -75,6 +75,7 @@
     [leftBtn addTarget:self
                  action:@selector(clickLeftBtnEvent:)
        forControlEvents:UIControlEventTouchUpInside];
+    [leftBtn setTitleColor:DEFAULT_GRAY_COLOR forState:UIControlStateHighlighted];
     
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     
@@ -94,6 +95,7 @@
     [rightBtn addTarget:self
                  action:@selector(clickRightBtnEvent:)
        forControlEvents:UIControlEventTouchUpInside];
+    [rightBtn setTitleColor:DEFAULT_GRAY_COLOR forState:UIControlStateHighlighted];
    
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     

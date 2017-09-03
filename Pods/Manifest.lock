@@ -30,9 +30,12 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - TZImagePickerController (1.7.8)
+  - XLPhotoBrowser+CoderXL (1.2.0):
+    - SDWebImage (~> 4.0.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -48,7 +51,8 @@ DEPENDENCIES:
   - MJRefresh
   - NIMSDK
   - ReactiveCocoa
-  - SDWebImage
+  - TZImagePickerController (= 1.7.8)
+  - XLPhotoBrowser+CoderXL
   - YYCategories
   - YYText
 
@@ -62,10 +66,12 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   NIMSDK: aa7c00ddc66181f75d8d970f7f5ab00ca95dd374
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+  XLPhotoBrowser+CoderXL: 2bf4036e2af4611b24bde1681e24c64ed01fbe98
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 0b60d6acfee9eda5d802d17d4fe5e481a8d55a07
+PODFILE CHECKSUM: b59c7717d26764a57255fd87bcfcfd7d19231302
 
 COCOAPODS: 1.3.0.beta.1
