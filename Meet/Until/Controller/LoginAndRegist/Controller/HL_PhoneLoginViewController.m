@@ -184,7 +184,7 @@ replacementString:(NSString *)string {
         
         _phoneLoginView        = [[HL_LoginInputView alloc] init];
         _phoneLoginView.tag    = 400;
-        _phoneLoginView.imgStr = @"";
+        _phoneLoginView.imgStr = @"phone-ico1";
         _phoneLoginView.placeholderStr          = MEET_LOGIN_PHONE_TEXTFIELD_TEXT;
         _phoneLoginView.inputTextField.tag      = 100;
         _phoneLoginView.loginViewDelegate       = self;
@@ -200,7 +200,7 @@ replacementString:(NSString *)string {
     if (!_passwordView) {
         _passwordView        = [[HL_LoginInputView alloc] init];
         _passwordView.tag    = 500;
-        _passwordView.imgStr = @"edit-ico4";
+        _passwordView.imgStr = @"phone-ico2";
         _passwordView.inputType         = InputViewType_Password;
         _passwordView.placeholderStr    = MEET_LOGIN_PASSWORD_TEXTFIELD_TEXT;
         _passwordView.inputTextField.tag      = 200;

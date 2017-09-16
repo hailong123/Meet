@@ -44,8 +44,8 @@ IB_DESIGNABLE
 
     [self.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.width.mas_equalTo(RELATIVE_HEIGHT(40));
-        make.height.mas_equalTo(RELATIVE_HEIGHT(40));
+        make.width.mas_equalTo(RELATIVE_HEIGHT(25));
+        make.height.mas_equalTo(RELATIVE_HEIGHT(29));
         make.left.equalTo(self).offset(RELATIVE_X(20));
     }];
     
@@ -94,6 +94,13 @@ IB_DESIGNABLE
     
     if (inputType == InputViewType_Password) {
         self.inputTextField.secureTextEntry = YES;
+    } else {
+        [self.imgView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self);
+            make.width.mas_equalTo(RELATIVE_HEIGHT(32));
+            make.height.mas_equalTo(RELATIVE_HEIGHT(50));
+            make.left.equalTo(self).offset(RELATIVE_X(20));
+        }];
     }
     
 }

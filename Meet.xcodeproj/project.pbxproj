@@ -712,7 +712,7 @@
 				TargetAttributes = {
 					92359F371F32AE49002B4538 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = PUD3AK4R32;
+						DevelopmentTeam = 7982H5B979;
 						ProvisioningStyle = Automatic;
 					};
 					92359F501F32AE49002B4538 = {
@@ -993,7 +993,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = PUD3AK4R32;
+				DEVELOPMENT_TEAM = 7982H5B979;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1070,7 +1070,7 @@
 					"-framework",
 					"\"VideoToolbox\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test;
+				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1081,7 +1081,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = PUD3AK4R32;
+				DEVELOPMENT_TEAM = 7982H5B979;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1158,7 +1158,7 @@
 					"-framework",
 					"\"VideoToolbox\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test;
+				PRODUCT_BUNDLE_IDENTIFIER = Sea.Meet.test7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
