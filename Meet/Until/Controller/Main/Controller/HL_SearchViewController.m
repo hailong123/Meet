@@ -8,18 +8,21 @@
 
 #import "HL_SearchViewController.h"
 
+#import "HL_SearchView.h"
 #import "HL_SearchCell.h"
+
+#import "HL_SearchDetailViewController.h"
 
 @interface HL_SearchViewController ()
 <
     UITableViewDelegate,
     UITableViewDataSource,
-    UISearchBarDelegate
+    SearchViewDelegate
 >
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) HL_SearchView *searchView;
 
 @property (nonatomic, strong) NSMutableArray *dataSources;
 
@@ -57,7 +60,7 @@
 
 #pragma mark - Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return section == 0 ? 44:CGFLOAT_MIN;
+    return section == 0 ? 35*2:CGFLOAT_MIN;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
@@ -65,11 +68,23 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return self.searchBar;
+    
+    UIView *view = [[UIView alloc] init];
+    
+    [view addSubview:self.searchView];
+    
+    [self.searchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view);
+        make.right.equalTo(view);
+        make.bottom.equalTo(view);
+        make.top.equalTo(view).offset(RELATIVE_Y(40));
+    }];
+    
+    return view;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,6 +92,22 @@
     HL_SearchCell *cell    = [tableView dequeueReusableCellWithIdentifier:[HL_SearchCell description]];
 
     return cell;
+}
+
+#pragma mark TouchDelegate
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
+#pragma mark SearchViewDelegate
+- (void)searchViewDelegate:(HL_SearchView *)searchView searchStr:(NSString *)searchStr {
+
+    [self.view endEditing:YES];
+    
+    HL_SearchDetailViewController *searchDetailVC = [[HL_SearchDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:searchDetailVC animated:YES];
+
 }
 
 #pragma mark - Setter And Getter
@@ -99,16 +130,16 @@
     return _tableView;
 }
 
-- (UISearchBar *)searchBar {
-
-    if (!_searchBar) {
-        
-        _searchBar          = [[UISearchBar alloc] init];
-        _searchBar.delegate = self;
+- (HL_SearchView *)searchView {
+ 
+    if (!_searchView) {
+        _searchView = [[HL_SearchView alloc] init];
+        _searchView.delegate = self;
     }
     
-    return _searchBar;
+    return _searchView;
 }
+
 
 #pragma mark - Dealloc
 

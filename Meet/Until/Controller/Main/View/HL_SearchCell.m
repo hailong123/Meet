@@ -37,7 +37,7 @@
     
     [self.iconImgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.contentView);
-        make.size.mas_equalTo(CGSizeMake(50, 50));
+        make.size.mas_equalTo(CGSizeMake(60, 60));
         make.left.equalTo(self.contentView).offset(15);
     }];
     
@@ -59,8 +59,6 @@
         make.width.equalTo(@20).priorityLow(250);
     }];
     
-    self.backgroundColor             = [UIColor clearColor];
-    self.contentView.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Public Method
@@ -75,9 +73,9 @@
         
         _iconImgView = [[UIImageView alloc] init];
         _iconImgView.layer.masksToBounds = YES;
-        _iconImgView.layer.cornerRadius  = 50/2;
+        _iconImgView.layer.cornerRadius  = 60/2;
         
-        _iconImgView.backgroundColor = [UIColor redColor];
+        _iconImgView.image = [UIImage imageNamed:@"icon2"];
     }
     
     return _iconImgView;
@@ -87,11 +85,11 @@
 
     if (!_nickNameLbl) {
         _nickNameLbl               = [[UILabel alloc] init];
-        _nickNameLbl.font          = [UIFont systemFontOfSize:13];
+        _nickNameLbl.font          = [UIFont systemFontOfSize:17];
         _nickNameLbl.textColor     = [UIColor blackColor];
         _nickNameLbl.textAlignment = NSTextAlignmentLeft;
         
-        _nickNameLbl.text = @"昵称";
+        _nickNameLbl.text = @"哈哈迷茫";
     }
  
     return _nickNameLbl;
@@ -102,11 +100,11 @@
     if (!_introLbl) {
         
         _introLbl      = [[UILabel alloc] init];
-        _introLbl.font = [UIFont systemFontOfSize:13];
+        _introLbl.font = [UIFont systemFontOfSize:15];
         _introLbl.textColor     = [UIColor grayColor];
         _introLbl.textAlignment = NSTextAlignmentLeft;
         
-        _introLbl.text = @"简介";
+        _introLbl.text = @"上海浦东 22 岁 162cm 本科";
     }
     
     return _introLbl;

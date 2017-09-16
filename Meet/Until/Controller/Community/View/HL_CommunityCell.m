@@ -28,6 +28,8 @@
 @property (nonatomic, strong) UILabel *introLbl;
 @property (nonatomic, strong) UILabel *nickNameLbl;
 
+@property (nonatomic, strong) UILabel *ageTwoLabel;
+
 @property (nonatomic, strong) UIImageView *sexImgView;
 @property (nonatomic, strong) UIImageView *iconImgView;
 @property (nonatomic, strong) UIImageView *timeImgView;
@@ -412,6 +414,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     return _timeImgView;
 }
 
+- (UILabel *)ageTwoLabel {
+
+    if (!_ageTwoLabel) {
+        _ageTwoLabel      = [[UILabel alloc] init];
+        _ageTwoLabel.font = [UIFont systemFontOfSize:12];
+        _ageTwoLabel.textColor       = [UIColor grayColor];
+        _ageTwoLabel.textAlignment   = NSTextAlignmentCenter;
+        _ageTwoLabel.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
+        
+        _ageTwoLabel.layer.masksToBounds = YES;
+        _ageTwoLabel.layer.cornerRadius  = 2;
+        
+        _ageTwoLabel.text = @"24岁";
+    }
+    
+    return _ageTwoLabel;
+}
+
 - (UICollectionView *)collectionView {
 
     if (!_collectionView) {
@@ -448,6 +468,32 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     _communityCellDelegate = communityCellDelegate;
     
     _hasDes.HL_CommunityCellDelegate = [self.communityCellDelegate respondsToSelector:@selector(communityCell:)];
+}
+
+- (void)setCellType:(CommunityCellType)cellType {
+
+    _cellType = cellType;
+    
+    switch (cellType) {
+        case CommunityCellType_Main:
+        {
+            self.sexImgView.hidden = YES;
+            
+            [self addSubview:self.ageTwoLabel];
+            
+            [self.ageTwoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.equalTo(self.sexImgView);
+                make.bottom.top.equalTo(self.sexImgView);
+            }];
+        }
+            break;
+            
+        case CommunityCellType_Community:
+        {
+            self.sexImgView.hidden = NO;
+        }
+            break;
+    }
 }
 
 #pragma mark - Dealloc

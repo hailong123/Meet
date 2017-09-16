@@ -39,12 +39,15 @@
 + (NSMutableArray *)fetchUserDataWithoutSetting:(BOOL)without {
 
     NSMutableArray *tmpArray = [NSMutableArray arrayWithCapacity:0];
+    HL_ConfigModel *modifyModel        = CreateConfigModel(@"征婚动态", nil, @"my-ico2", nil, NO);
+    HL_ConfigModel *certificationModel = CreateConfigModel(@"我的认证", nil, @"my-ico1", nil, NO);
+    HL_ConfigModel *feelModel   = CreateConfigModel(@"心情动态", nil, @"my-ico3", nil, NO);
+    HL_ConfigModel *lifeModel   = CreateConfigModel(@"生活照片", nil, @"my-ico4", nil, NO);
+    HL_ConfigModel *settModel   = CreateConfigModel(@"设置",    nil, @"my-ico6", @"more", YES);
+    HL_ConfigModel *friendModel = CreateConfigModel(@"好友",    nil, @"my-ico5", @"more", NO);
     
-    HL_ConfigModel *feelModel   = CreateConfigModel(@"心情动态", nil, @"my-ico1", nil, NO);
-    HL_ConfigModel *lifeModel   = CreateConfigModel(@"生活照片", nil, @"my-ico2", nil, NO);
-    HL_ConfigModel *settModel   = CreateConfigModel(@"设置",    nil, @"my-ico4", @"more", YES);
-    HL_ConfigModel *friendModel = CreateConfigModel(@"好友",    nil, @"my-ico3", @"more", NO);
-    
+    [tmpArray addObject:@[certificationModel]];
+    [tmpArray addObject:@[modifyModel]];
     [tmpArray addObject:@[feelModel]];
     [tmpArray addObject:@[lifeModel]];
     

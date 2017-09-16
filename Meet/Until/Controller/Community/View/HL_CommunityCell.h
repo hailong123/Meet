@@ -10,6 +10,13 @@
 
 @class HL_CommunityCell;
 
+typedef NS_ENUM(NSInteger, CommunityCellType) {
+
+    CommunityCellType_Main = 0,//首页
+    CommunityCellType_Community
+    
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol HL_CommunityCellDelegate <NSObject>
@@ -25,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) HL_CommunityModel *communityModel;
 
 @property (nonatomic, assign) id <HL_CommunityCellDelegate> communityCellDelegate;
+
+@property (nonatomic, assign) CommunityCellType cellType;
 
 @end
 

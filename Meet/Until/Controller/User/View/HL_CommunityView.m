@@ -11,7 +11,6 @@
 @interface HL_CommunityView ()
 
 @property (nonatomic, strong) UILabel *lookLabel;
-@property (nonatomic, strong) UILabel *hasNoCommunityLabel;
 @property (nonatomic, strong) UILabel *communityCountLabel;
 
 @property (nonatomic, strong) UIImageView *rightImgView;
@@ -95,7 +94,6 @@
  
     if (!_hasNoCommunityLabel) {
         _hasNoCommunityLabel           = [[UILabel alloc] init];
-        _hasNoCommunityLabel.text      = MEET_USER_COMMUNITY_HASNO_TITLE;
         _hasNoCommunityLabel.font      = [UIFont systemFontOfSize:18 weight:14];
         _hasNoCommunityLabel.textColor     = DEFAULT_GRAY_COLOR;
         _hasNoCommunityLabel.textAlignment = NSTextAlignmentCenter;

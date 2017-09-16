@@ -85,8 +85,11 @@
 
     HL_CommunityCell *cell = [tableView dequeueReusableCellWithIdentifier:[HL_CommunityCell description]];
     
+    cell.cellType       = CommunityCellType_Community;
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.communityModel = self.dataSource[indexPath.row];
+    
     cell.communityCellDelegate = self;
     
     return cell;

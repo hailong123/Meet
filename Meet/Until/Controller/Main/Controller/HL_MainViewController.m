@@ -91,6 +91,7 @@
     HL_CommunityCell *communityCell = [tableView dequeueReusableCellWithIdentifier:[HL_CommunityCell description]];
     
     communityCell.communityModel = self.dataSources[indexPath.row];
+    communityCell.cellType       = CommunityCellType_Main;
     
     return communityCell;
 }

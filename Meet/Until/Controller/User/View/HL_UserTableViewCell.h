@@ -16,7 +16,9 @@ typedef NS_ENUM(NSInteger, CellType) {
 
     CellType_Dynamic = 0,
     CellType_Photo,
-    CellType_Setting
+    CellType_Setting,
+    CellType_Marriage,
+    CellType_Certification
 };
 
 @interface HL_UserTableViewCell : UITableViewCell

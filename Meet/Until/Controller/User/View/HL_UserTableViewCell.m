@@ -12,6 +12,8 @@
 
 #import "HL_CommunityView.h"
 
+#import "HL_CertificationView.h"
+
 @interface HL_UserTableViewCell ()
 <
     UIScrollViewDelegate
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) UILabel *contantLbl;
 
 @property (nonatomic, strong) HL_CommunityView *communityView;
+@property (nonatomic, strong) HL_CertificationView *certificationView;
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UIImageView *rightImageView;
@@ -100,9 +103,11 @@
     
 }
 
-- (void)addCommunityView {
+- (void)addCommunityViewWithStr:(NSString *)str {
     
     [self.contentView addSubview:self.communityView];
+    
+    self.communityView.hasNoCommunityLabel.text = str;
     
     [self.communityView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView);
@@ -111,6 +116,20 @@
         make.top.equalTo(self.lineLbl.mas_bottom);
     }];
     
+}
+
+//f认证图片
+- (void)addCertificationView {
+
+    [self.contentView addSubview:self.certificationView];
+    
+    [self.certificationView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.lineLbl);
+        make.right.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView);
+        make.top.equalTo(self.lineLbl.mas_bottom);
+    }];
+
 }
 
 #pragma mark - Publish Method
@@ -130,12 +149,22 @@
             
         case CellType_Dynamic:
         {
-            [self addCommunityView];
+            [self addCommunityViewWithStr:MEET_USER_COMMUNITY_HASNO_TITLE];
         }
             break;
         case CellType_Photo:
         {
             [self addScrollView];
+        }
+            break;
+        case CellType_Marriage:
+        {
+             [self addCommunityViewWithStr:MEET_USER_COMMUNITY_HASNO_MARIARY_TITLE];
+        }
+            break;
+        case CellType_Certification:
+        {
+            [self addCertificationView];
         }
             break;
     }
@@ -263,6 +292,15 @@
     }
     
     return _communityView;
+}
+
+- (HL_CertificationView *)certificationView {
+
+    if (!_certificationView) {
+        _certificationView = [[HL_CertificationView alloc] init];
+    }
+    
+    return _certificationView;
 }
 
 @end

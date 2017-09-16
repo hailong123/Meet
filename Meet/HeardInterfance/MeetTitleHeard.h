@@ -36,5 +36,6 @@
 
 #pragma mark - 我的
 #define MEET_USER_COMMUNITY_HASNO_TITLE @"目前暂未发布心情动态"
+#define MEET_USER_COMMUNITY_HASNO_MARIARY_TITLE @"目前暂未发布征婚动态"
 
 #endif /* MeetTitleHeard_h */

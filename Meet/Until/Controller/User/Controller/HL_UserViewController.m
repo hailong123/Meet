@@ -85,7 +85,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.section == 0 ? 140:(indexPath.section == 1?180:45);
+    if (indexPath.section >= 4) {
+        return 45;
+    } else if (indexPath.section == 3) {
+        return 180;
+    } else {
+        return 140;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -101,12 +107,23 @@
     switch (indexPath.section) {
         case 0:
         {
+            cell.type           = CellType_Certification;
+            
+        }
+            break;
+        case 1:
+        {
+            cell.type           = CellType_Marriage;
+            cell.communityCount = 0;
+        }
+            break;
+        case 2:
+        {
             cell.type           = CellType_Dynamic;
             cell.communityCount = 0;
         }
             break;
-            
-        case 1:
+        case 3:
         {
             cell.type = CellType_Photo;
             
@@ -117,7 +134,7 @@
                                 @"icon"] mutableCopy];
         }
             break;
-        case 2:
+        case 5:
         {
             cell.type = CellType_Setting;
         }

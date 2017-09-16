@@ -49,6 +49,9 @@
 		FE5142FD1F387701006EFF81 /* HL_UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FC1F387701006EFF81 /* HL_UserTableViewCell.m */; };
 		FE5143001F38A1FF006EFF81 /* HL_SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */; };
 		FE5143031F38A4CA006EFF81 /* HL_SettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */; };
+		FE514CFD1F6D6450002FBBC0 /* HL_SearchDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE514CFC1F6D6450002FBBC0 /* HL_SearchDetailViewController.m */; };
+		FE514D001F6D6B65002FBBC0 /* HL_CertificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE514CFF1F6D6B65002FBBC0 /* HL_CertificationView.m */; };
+		FE6C9D731F6D354C005E75D1 /* HL_SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6C9D721F6D354C005E75D1 /* HL_SearchView.m */; };
 		FE769B0D1F48051A005FC279 /* HL_CommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */; };
 		FEE56A841F5B9589004ED325 /* HL_LocalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A831F5B9589004ED325 /* HL_LocalTool.m */; };
 		FEE56A871F5BADE4004ED325 /* HL_CommunityView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE56A861F5BADE4004ED325 /* HL_CommunityView.m */; };
@@ -159,6 +162,12 @@
 		FE5142FF1F38A1FF006EFF81 /* HL_SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SettingViewController.m; sourceTree = "<group>"; };
 		FE5143011F38A4CA006EFF81 /* HL_SettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_SettingCell.h; sourceTree = "<group>"; };
 		FE5143021F38A4CA006EFF81 /* HL_SettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SettingCell.m; sourceTree = "<group>"; };
+		FE514CFB1F6D6450002FBBC0 /* HL_SearchDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_SearchDetailViewController.h; sourceTree = "<group>"; };
+		FE514CFC1F6D6450002FBBC0 /* HL_SearchDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SearchDetailViewController.m; sourceTree = "<group>"; };
+		FE514CFE1F6D6B65002FBBC0 /* HL_CertificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_CertificationView.h; sourceTree = "<group>"; };
+		FE514CFF1F6D6B65002FBBC0 /* HL_CertificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_CertificationView.m; sourceTree = "<group>"; };
+		FE6C9D711F6D354C005E75D1 /* HL_SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_SearchView.h; sourceTree = "<group>"; };
+		FE6C9D721F6D354C005E75D1 /* HL_SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_SearchView.m; sourceTree = "<group>"; };
 		FE769B0B1F48051A005FC279 /* HL_CommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_CommunityModel.h; sourceTree = "<group>"; };
 		FE769B0C1F48051A005FC279 /* HL_CommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HL_CommunityModel.m; sourceTree = "<group>"; };
 		FEE56A821F5B9589004ED325 /* HL_LocalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HL_LocalTool.h; sourceTree = "<group>"; };
@@ -526,6 +535,8 @@
 				FEE56A861F5BADE4004ED325 /* HL_CommunityView.m */,
 				FEF487121F4F085C002A8265 /* HL_EditBaseInfoView.h */,
 				FEF487131F4F085C002A8265 /* HL_EditBaseInfoView.m */,
+				FE514CFE1F6D6B65002FBBC0 /* HL_CertificationView.h */,
+				FE514CFF1F6D6B65002FBBC0 /* HL_CertificationView.m */,
 				FE5142FB1F387701006EFF81 /* HL_UserTableViewCell.h */,
 				FE5142FC1F387701006EFF81 /* HL_UserTableViewCell.m */,
 			);
@@ -548,6 +559,8 @@
 				92780EEA1F399FD200667C69 /* HL_EditViewController.m */,
 				92780EE31F3999AB00667C69 /* HL_SearchViewController.h */,
 				92780EE41F3999AB00667C69 /* HL_SearchViewController.m */,
+				FE514CFB1F6D6450002FBBC0 /* HL_SearchDetailViewController.h */,
+				FE514CFC1F6D6450002FBBC0 /* HL_SearchDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -564,6 +577,8 @@
 			children = (
 				92780EE61F399C9100667C69 /* HL_SearchCell.h */,
 				92780EE71F399C9100667C69 /* HL_SearchCell.m */,
+				FE6C9D711F6D354C005E75D1 /* HL_SearchView.h */,
+				FE6C9D721F6D354C005E75D1 /* HL_SearchView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -825,6 +840,7 @@
 				FE3CB28B1F51CFC800B0C044 /* HL_PhotoCollectionViewCell.m in Sources */,
 				92359FB41F32E882002B4538 /* HL_LoginViewController.m in Sources */,
 				FEE56A841F5B9589004ED325 /* HL_LocalTool.m in Sources */,
+				FE6C9D731F6D354C005E75D1 /* HL_SearchView.m in Sources */,
 				92E6CE7D1F3306C500FE07ED /* HL_PhotoManager.m in Sources */,
 				92359F6C1F32B081002B4538 /* AppDelegate.m in Sources */,
 				92359FB61F32E882002B4538 /* HL_RegisterViewController.m in Sources */,
@@ -833,7 +849,9 @@
 				FEE56A8D1F5BDAE5004ED325 /* HL_LikeAndMessageView.m in Sources */,
 				92780EEB1F399FD200667C69 /* HL_EditViewController.m in Sources */,
 				92359F3D1F32AE49002B4538 /* main.m in Sources */,
+				FE514D001F6D6B65002FBBC0 /* HL_CertificationView.m in Sources */,
 				FE2571581F4046FF004426C1 /* MySingleton.m in Sources */,
+				FE514CFD1F6D6450002FBBC0 /* HL_SearchDetailViewController.m in Sources */,
 				FE5142FD1F387701006EFF81 /* HL_UserTableViewCell.m in Sources */,
 				FEE56A8A1F5BC8D7004ED325 /* HL_AddPhotoScrollerView.m in Sources */,
 				FE2571561F4046FF004426C1 /* CityModelData.m in Sources */,

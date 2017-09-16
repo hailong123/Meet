@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger communityCount;
 
+@property (nonatomic, strong) UILabel *hasNoCommunityLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END
