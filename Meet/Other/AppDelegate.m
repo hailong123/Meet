@@ -11,6 +11,10 @@
 #import "HL_UserWarpper.h"
 #import "HL_JudgeLoginTool.h"
 
+#import <YTKNetworkConfig.h>
+
+#import "HL_UrlArgumentsFilter.h"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +27,8 @@
     [self judgeLoginStatus];
     
     [self registIM];
+    
+    [self ytkRequestConfig];
     
     return YES;
 }
@@ -47,6 +53,24 @@
 //    option.pkCername   = @"推送证书名称";
 //    
 //    [[NIMSDK sharedSDK] registerWithOption:option];
+}
+
+- (void)ytkRequestConfig {
+
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    
+    config.baseUrl = @"http://localhost:8880/Meet/public/";
+    
+    NSDictionary *commonArguments = @{
+                                      @"token":@"888888888888",
+                                      @"version":[UIDevice currentDevice].systemVersion,
+                                      @"plaform":@"iOS_iPhone"
+                                      };
+    
+    HL_UrlArgumentsFilter *urlFilter = [HL_UrlArgumentsFilter filterWithArguments:commonArguments];
+    
+    [config addUrlFilter:urlFilter];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

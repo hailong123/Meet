@@ -14,10 +14,15 @@
 
 #import "HL_LoginInputView.h"
 
+#import "HL_UserModel.h"
+
+#import "HL_LoginAndRegistRequestTool.h"
+
 @interface HL_PhoneLoginViewController ()
 <
+    UITextFieldDelegate,
     HL_LoginInputViewDelegate,
-    UITextFieldDelegate
+    loginAndRegistRequestToolDelegate
 >
 
 @property (nonatomic, strong) HL_LoginInputView *passwordView;
@@ -29,6 +34,8 @@
 
 @property (nonatomic, assign) BOOL phoneSwitch;
 @property (nonatomic, assign) BOOL passwordSwitch;
+
+@property (nonatomic, strong) HL_LoginAndRegistRequestTool *loginRequestTool;
 
 @end
 
@@ -106,9 +113,11 @@
     switch (btn.tag) {
         case 600:
         {
-            HL_JudgeLoginTool *loginTool = [[HL_JudgeLoginTool alloc] init];
+//            HL_JudgeLoginTool *loginTool = [[HL_JudgeLoginTool alloc] init];
+//            
+//            loginTool.logined = NO;
             
-            loginTool.logined = NO;
+            [self.loginRequestTool loginWithPhoneNumber:@"1111111" password:@"2222222"];
             
         }
             break;
@@ -174,6 +183,23 @@ replacementString:(NSString *)string {
     }
     
     return YES;
+}
+
+#pragma mark HL_LoginAndRegistRequestToolDelegate
+- (void)loginAndRegistRequestSuccess:(HL_BaseRequest *)baseReqeust
+                            response:(id)response
+                          codeNumber:(NSInteger)codeNumber
+                               error:(NSError *)error {
+
+    
+}
+
+- (void)loginAndRegistRequestFaild:(HL_BaseRequest *)baseRequest
+                        codeNumber:(NSInteger)codeNumber
+                             error:(NSError *)error {
+
+    
+    
 }
 
 #pragma mark - Setter And Getter
@@ -285,6 +311,16 @@ replacementString:(NSString *)string {
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
+}
+
+- (HL_LoginAndRegistRequestTool *)loginRequestTool {
+
+    if (!_loginRequestTool) {
+        _loginRequestTool = [[HL_LoginAndRegistRequestTool alloc] init];
+        _loginRequestTool.loginAndRegistDelegate = self;
+    }
+    
+    return _loginRequestTool;
 }
 
 #pragma mark - Dealloc

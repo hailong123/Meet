@@ -159,7 +159,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    if (indexPath.section == 2 && indexPath.row == 1) {
+    if (indexPath.section == 4 && indexPath.row == 1) {
         
         HL_SettingViewController *settingVC = [[HL_SettingViewController alloc] init];
         settingVC.hidesBottomBarWhenPushed  = YES;
