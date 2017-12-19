@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - DZNEmptyDataSet (1.8.1)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
   - FMDB/standard (2.7.2)
@@ -21,7 +22,7 @@ PODS:
   - MBProgressHUD (0.9.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
-  - NIMSDK (4.0.0)
+  - NIMSDK (4.1.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -29,9 +30,14 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (3.7.6):
-    - SDWebImage/Core (= 3.7.6)
-  - SDWebImage/Core (3.7.6)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - TZImagePickerController (1.7.8)
+  - XLPhotoBrowser+CoderXL (1.2.0):
+    - SDWebImage (~> 4.0.0)
+  - YTKNetwork (2.0.3):
+    - AFNetworking (~> 3.0)
   - YYCategories (1.0.4):
     - YYCategories/no-arc (= 1.0.4)
   - YYCategories/no-arc (1.0.4)
@@ -39,30 +45,37 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - DZNEmptyDataSet
   - FMDB
   - Masonry
-  - MBProgressHUD (~> 0.9.1)
+  - MBProgressHUD
   - MJExtension
   - MJRefresh
   - NIMSDK
-  - ReactiveCocoa (~> 2.5)
-  - SDWebImage (~> 3.7.6)
+  - ReactiveCocoa
+  - TZImagePickerController (= 1.7.8)
+  - XLPhotoBrowser+CoderXL
+  - YTKNetwork
   - YYCategories
   - YYText
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  NIMSDK: f919c8315c0d5775f8a0a84ce7c5ef12060b025d
+  NIMSDK: aa7c00ddc66181f75d8d970f7f5ab00ca95dd374
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+  XLPhotoBrowser+CoderXL: 2bf4036e2af4611b24bde1681e24c64ed01fbe98
+  YTKNetwork: c4b0c29c9d639dc050d475de69ee626d53eac598
   YYCategories: 6bcd4314c6661a561410dce4a793379ebd306abd
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: acdec113e2c6b6e8819e02684a31a0f28ec324d9
+PODFILE CHECKSUM: 8601be6f5b4b130938e324679da9fc3bf3b35d7e
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.0.beta.1

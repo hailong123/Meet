@@ -11,7 +11,9 @@
 #import "HL_UserWarpper.h"
 #import "HL_JudgeLoginTool.h"
 
-#import <NIMSDK/NIMSDK.h>
+#import <YTKNetworkConfig.h>
+
+#import "HL_UrlArgumentsFilter.h"
 
 @interface AppDelegate ()
 
@@ -26,11 +28,13 @@
     
     [self registIM];
     
+    [self ytkRequestConfig];
+    
     return YES;
 }
 
 - (void)judgeLoginStatus {
-
+    
     HL_JudgeLoginTool *loginTool = [[HL_JudgeLoginTool alloc] init];
     
     [HL_UserWarpper sharedInstance].logined = YES;
@@ -41,12 +45,31 @@
 
 - (void)registIM {
 
-    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:@"APPKEY"];
+    self.window.backgroundColor = [UIColor whiteColor];
     
-    option.apnsCername = @"推送证书名称";
-    option.pkCername   = @"推送证书名称";
+//    NIMSDKOption *option = [NIMSDKOption optionWithAppKey:@"APPKEY"];
+//    
+//    option.apnsCername = @"推送证书名称";
+//    option.pkCername   = @"推送证书名称";
+//    
+//    [[NIMSDK sharedSDK] registerWithOption:option];
+}
+
+- (void)ytkRequestConfig {
+
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl           = @"http://localhost:8880/Meet/public/";
     
-    [[NIMSDK sharedSDK] registerWithOption:option];
+    NSDictionary *commonArguments = @{
+                                      @"token":@"888888888888",
+                                      @"version":[UIDevice currentDevice].systemVersion,
+                                      @"plaform":@"iOS_iPhone"
+                                      };
+    
+    HL_UrlArgumentsFilter *urlFilter = [HL_UrlArgumentsFilter filterWithArguments:commonArguments];
+    
+    [config addUrlFilter:urlFilter];
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

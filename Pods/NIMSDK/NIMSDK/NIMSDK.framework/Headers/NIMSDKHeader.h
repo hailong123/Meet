@@ -158,6 +158,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,strong,readonly)   id<NIMRobotManager> robotManager;
 
+/**
+ *  红包管理类
+ */
+@property (nonatomic,strong,readonly)   id<NIMRedPacketManager> redPacketManager;
+
 @end
 
 NS_ASSUME_NONNULL_END
