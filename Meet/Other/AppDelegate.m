@@ -58,8 +58,7 @@
 - (void)ytkRequestConfig {
 
     YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
-    
-    config.baseUrl = @"http://localhost:8880/Meet/public/";
+    config.baseUrl           = @"http://localhost:8880/Meet/public/";
     
     NSDictionary *commonArguments = @{
                                       @"token":@"888888888888",
